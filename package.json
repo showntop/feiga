@@ -1,0 +1,10 @@
+{
+  "name": "ai-office-greybox",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test:sim": "node --test scripts/sim/sim.test.ts",
+    "sim": "node scripts/sim/sim.ts",
+    "check:prototype": "node --check prototype/app.js"
+  }
+}

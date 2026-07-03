@@ -1,0 +1,402 @@
+:root {
+  color-scheme: light;
+  --bg: #f4f5f7;
+  --panel: #ffffff;
+  --ink: #20242c;
+  --muted: #687080;
+  --line: #d9dde5;
+  --accent: #246bfe;
+  --danger: #e04343;
+  --warn: #f39a22;
+  --ok: #1d9f72;
+  --shadow: 0 10px 30px rgba(25, 30, 40, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: #dfe3ea;
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.phone-shell {
+  width: min(100vw, 430px);
+  height: min(100vh, 840px);
+  min-height: 720px;
+  background: var(--bg);
+  display: grid;
+  grid-template-rows: auto auto 1fr auto 150px;
+  gap: 10px;
+  padding: 14px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.top-bars {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.meter {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  padding: 10px;
+}
+
+.meter-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.meter-label strong {
+  font-size: 20px;
+  color: var(--ink);
+}
+
+.track {
+  height: 8px;
+  background: #e9ecf1;
+  overflow: hidden;
+}
+
+.fill {
+  height: 100%;
+  width: 0;
+  transition: width 180ms ease;
+}
+
+.rep {
+  background: var(--accent);
+}
+
+.suspicion {
+  background: var(--danger);
+}
+
+.boss-panel,
+.queue-panel,
+.ai-desk,
+.event-log {
+  background: var(--panel);
+  border: 1px solid var(--line);
+}
+
+.boss-panel {
+  display: grid;
+  grid-template-columns: 58px 1fr;
+  gap: 10px;
+  padding: 10px;
+  align-items: center;
+}
+
+.boss-panel.warning {
+  border-color: var(--warn);
+  background: #fff7ed;
+}
+
+.boss-avatar {
+  height: 48px;
+  display: grid;
+  place-items: center;
+  background: #222;
+  color: #fff;
+  font-weight: 700;
+}
+
+.boss-title {
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.boss-copy {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.45;
+  margin-top: 3px;
+}
+
+.work-area {
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 10px;
+}
+
+.queue-panel {
+  min-width: 0;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.panel-title {
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--muted);
+}
+
+.task-list {
+  display: grid;
+  gap: 8px;
+}
+
+.task-card {
+  border: 1px solid var(--line);
+  background: #fafbfc;
+  padding: 9px;
+  cursor: pointer;
+  min-height: 86px;
+}
+
+.task-card.selected {
+  border-color: var(--accent);
+  background: #eef4ff;
+}
+
+.task-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.stars {
+  color: var(--warn);
+  white-space: nowrap;
+}
+
+.task-meta {
+  display: flex;
+  justify-content: space-between;
+  margin: 8px 0 6px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.mini-track {
+  height: 7px;
+  background: #e4e8ef;
+}
+
+.mini-fill {
+  height: 100%;
+  background: var(--ok);
+  transition: width 160ms ease;
+}
+
+.task-state {
+  margin-top: 7px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.task-card.accident .mini-fill {
+  background: var(--danger);
+}
+
+.task-card.accident .task-state {
+  color: var(--danger);
+  font-weight: 800;
+}
+
+.folded {
+  font-size: 12px;
+  color: var(--muted);
+  padding-top: 2px;
+}
+
+.ai-desk {
+  padding: 12px;
+  display: grid;
+  grid-template-rows: auto 1fr auto auto;
+  align-items: center;
+  justify-items: center;
+  gap: 10px;
+}
+
+.ai-head {
+  width: 76px;
+  height: 76px;
+  display: grid;
+  place-items: center;
+  background: #eaf0ff;
+  border: 2px solid #96aee8;
+  border-radius: 50%;
+  font-weight: 900;
+}
+
+.ai-head.hit {
+  animation: hit 260ms ease;
+}
+
+.ai-screen {
+  width: 100%;
+  min-height: 132px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 12px;
+  background: #171b22;
+  color: #c7f8d4;
+  font-weight: 800;
+}
+
+.ai-status {
+  color: var(--muted);
+  font-size: 12px;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.ai-tip {
+  min-height: 28px;
+  padding: 6px 10px;
+  display: grid;
+  place-items: center;
+  background: #eef4ff;
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 800;
+  text-align: center;
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.action-btn {
+  min-height: 58px;
+  border: 0;
+  background: #20242c;
+  color: #fff;
+  font: inherit;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  padding: 0 12px;
+  cursor: pointer;
+}
+
+.action-btn span {
+  font-weight: 800;
+}
+
+.action-btn strong {
+  min-width: 26px;
+  height: 26px;
+  display: grid;
+  place-items: center;
+  background: #fff;
+  color: #20242c;
+}
+
+.action-btn:disabled {
+  opacity: 0.38;
+  cursor: not-allowed;
+}
+
+.event-log {
+  min-height: 0;
+  padding: 10px;
+  overflow: hidden;
+}
+
+.event-log ul {
+  list-style: none;
+  padding: 0;
+  margin: 7px 0 0;
+  display: grid;
+  gap: 5px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.event-log li:first-child {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.modal {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(18, 22, 30, 0.5);
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-card {
+  width: 100%;
+  background: #fff;
+  padding: 22px;
+  box-shadow: var(--shadow);
+}
+
+.modal-card h1 {
+  margin: 0 0 8px;
+  font-size: 24px;
+}
+
+.modal-card p {
+  margin: 0 0 18px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.modal-card button {
+  width: 100%;
+  height: 46px;
+  border: 0;
+  background: var(--accent);
+  color: #fff;
+  font: inherit;
+  font-weight: 800;
+}
+
+@keyframes hit {
+  0% { transform: translateX(0); }
+  35% { transform: translateX(-8px); }
+  70% { transform: translateX(8px); }
+  100% { transform: translateX(0); }
+}
+
+@media (max-width: 380px) {
+  .phone-shell {
+    padding: 10px;
+    gap: 8px;
+  }
+
+  .task-card {
+    min-height: 78px;
+    padding: 8px;
+  }
+
+  .action-btn {
+    padding: 0 8px;
+  }
+
+  .event-log ul {
+    gap: 3px;
+  }
+}

@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+COCOS_CREATOR="/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/MacOS/CocosCreator"
+
+if [[ ! -x "$COCOS_CREATOR" ]]; then
+  echo "Cocos Creator executable not found at: $COCOS_CREATOR" >&2
+  exit 1
+fi
+
+exec "$COCOS_CREATOR" "$@"

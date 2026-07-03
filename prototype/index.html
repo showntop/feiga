@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>别让 AI 转正 - 灰盒原型</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="phone-shell" aria-label="别让 AI 转正灰盒原型">
+      <section class="top-bars">
+        <div class="meter">
+          <div class="meter-label">
+            <span>AI 信誉</span>
+            <strong id="repText">80</strong>
+          </div>
+          <div class="track"><div id="repBar" class="fill rep"></div></div>
+        </div>
+        <div class="meter">
+          <div class="meter-label">
+            <span>老板怀疑</span>
+            <strong id="susText">0</strong>
+          </div>
+          <div class="track"><div id="susBar" class="fill suspicion"></div></div>
+        </div>
+      </section>
+
+      <section id="bossPanel" class="boss-panel">
+        <div class="boss-avatar">老板</div>
+        <div>
+          <div class="boss-title" id="bossTitle">老板暂时没看这边</div>
+          <div class="boss-copy" id="bossCopy">等关键任务出问题后再甩锅，硬甩会被怀疑。</div>
+        </div>
+      </section>
+
+      <section class="work-area">
+        <div class="queue-panel">
+          <div class="panel-title">AI 工作队列</div>
+          <div id="taskList" class="task-list"></div>
+          <div id="foldedTasks" class="folded"></div>
+        </div>
+
+        <div class="ai-desk">
+          <div class="ai-head" id="aiHead">AI</div>
+          <div class="ai-screen" id="aiScreen">处理中</div>
+          <div class="ai-status" id="aiStatus">优先处理：老板汇报</div>
+          <div class="ai-tip" id="aiTip">等待事故窗口</div>
+        </div>
+      </section>
+
+      <section class="actions" aria-label="玩家动作">
+        <button class="action-btn" id="addWorkBtn" data-action="addWork">
+          <span>塞活</span>
+          <strong id="addWorkCount">3</strong>
+        </button>
+        <button class="action-btn" id="changeBtn" data-action="changeRequirement">
+          <span>改口</span>
+          <strong id="changeCount">2</strong>
+        </button>
+        <button class="action-btn" id="blameBtn" data-action="blame">
+          <span>甩锅</span>
+          <strong id="blameCount">2</strong>
+        </button>
+      </section>
+
+      <section class="event-log" aria-live="polite">
+        <div class="panel-title">事件</div>
+        <ul id="logList"></ul>
+      </section>
+
+      <section id="resultModal" class="modal hidden">
+        <div class="modal-card">
+          <h1 id="resultTitle">结算</h1>
+          <p id="resultCopy"></p>
+          <button id="restartBtn">再来一局</button>
+        </div>
+      </section>
+    </main>
+
+    <script src="./app.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,16 @@
+# 依赖
+node_modules/
+
+# macOS / 系统
+.DS_Store
+
+# 日志
+*.log
+
+# Cocos Creator 编辑器生成物（不入库，各人本地生成）
+cocos/ai-office/temp/
+cocos/ai-office/library/
+
+# IDE
+.vscode/
+.idea/
